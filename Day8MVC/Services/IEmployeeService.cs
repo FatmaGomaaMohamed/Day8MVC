@@ -5,10 +5,10 @@ namespace Day8MVC.Services
 {
     public interface IEmployeeService
     {
+        int Add(Employee employee);
+        int Delete(int id);
+        int Edit(Employee employee);
         List<EmployeeVM> GetAll();
         EmployeeVM GetById(int id);
-        //int Add(Employee employee);
-        //int Edit(Employee employee);
-        //int Delete(Employee employee);
     }
 }

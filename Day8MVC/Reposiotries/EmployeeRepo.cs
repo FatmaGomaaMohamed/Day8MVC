@@ -6,7 +6,7 @@ namespace Day8MVC.Reposiotries
         CompanyDbContext context;
         public EmployeeRepo(CompanyDbContext context)
         {
-           this.context = context;
+            this.context = context;
         }
         public List<Employee> GetAll()
         {

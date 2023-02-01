@@ -15,9 +15,21 @@ namespace Day8MVC.Controllers
         }
         public IActionResult Index()
         {
-            List<EmployeeVM> employeeVMs = employeeService.GetAll();
-            return View(employeeVMs);
+            return View(employeeService.GetAll());
         }
-        
+        public IActionResult GetById(int id)
+        {
+            return View(employeeService.GetById(id));
+        }
+        public IActionResult delete(int id)
+        {
+            employeeService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Edit(Employee emp)
+        {
+            employeeService.Edit(emp);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
