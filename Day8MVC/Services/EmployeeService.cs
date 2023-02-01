@@ -58,9 +58,10 @@ namespace Day8MVC.Services
         //    return employeeRepo.Add(employeeVM);
         //}
 
-        public int Edit(Employee employeeVM)
+        public int Edit(EmployeeVM employee)
         {
-            return employeeRepo.Edit(employeeVM);
+            Employee employee1 = new Employee();
+            return employeeRepo.Edit(employee1);
         }
         public int Delete(int id)
         {  
@@ -69,7 +70,13 @@ namespace Day8MVC.Services
 
         public int Add(Employee employee)
         {
-            throw new NotImplementedException();
+            EmployeeVM employeevm=new EmployeeVM();
+            employeevm.FirstName= employee.FirstName;
+            employeevm.Salary=employee.Salary;
+            employeevm.Address=employee.Address;
+            employeevm.LastName=employee.LastName;
+            employeevm.MiddleName= employee.MiddleName;
+            return employeeRepo.Add(employee);
         }
     }
 }
