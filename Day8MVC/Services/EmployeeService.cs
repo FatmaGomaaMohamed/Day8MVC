@@ -68,14 +68,14 @@ namespace Day8MVC.Services
             return employeeRepo.Delete(id); ;
         }
 
-        public int Add(Employee employee)
+        public int Add(EmployeeVM employeevm)
         {
-            EmployeeVM employeevm=new EmployeeVM();
-            employeevm.FirstName= employee.FirstName;
-            employeevm.Salary=employee.Salary;
-            employeevm.Address=employee.Address;
-            employeevm.LastName=employee.LastName;
-            employeevm.MiddleName= employee.MiddleName;
+            Employee employee = new Employee();
+            employee.FirstName= employeevm.FirstName;
+            employee.Salary=employeevm.Salary;
+            employee.Address=employeevm.Address;
+            employee.LastName=employeevm.LastName;
+            employee.MiddleName= employeevm.MiddleName;
             return employeeRepo.Add(employee);
         }
     }

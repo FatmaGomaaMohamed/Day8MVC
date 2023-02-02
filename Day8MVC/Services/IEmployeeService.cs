@@ -5,7 +5,7 @@ namespace Day8MVC.Services
 {
     public interface IEmployeeService
     {
-        int Add(Employee employeevm);
+        int Add(EmployeeVM employeevm);
         int Delete(int id);
         int Edit(EmployeeVM employeevm);
         List<EmployeeVM> GetAll();

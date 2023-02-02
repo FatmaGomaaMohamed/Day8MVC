@@ -37,7 +37,7 @@ namespace Day8MVC.Controllers
             return View(employeeService.GetAll());
         }
         [HttpPost]
-        public IActionResult Add(Employee emp)
+        public IActionResult Add(EmployeeVM emp)
         {
             employeeService.Add(emp);
             return RedirectToAction(nameof(Index));
