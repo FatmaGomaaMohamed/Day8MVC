@@ -2,6 +2,7 @@ using Day8MVC.Models;
 using Day8MVC.Reposiotries;
 using Day8MVC.ServiceLifeTime;
 using Day8MVC.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Day8MVC
@@ -19,7 +20,18 @@ namespace Day8MVC
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("myCS"));
             });
-            
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<CompanyDbContext>();
+            builder.Services.Configure<IdentityOptions>(opts =>
+            {
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireDigit = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequiredLength = 6;
+                opts.User.RequireUniqueEmail = true;
+            });
             builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
@@ -38,6 +50,8 @@ namespace Day8MVC
 
             app.UseRouting();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

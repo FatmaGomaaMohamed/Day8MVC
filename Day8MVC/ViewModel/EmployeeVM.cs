@@ -14,5 +14,6 @@ namespace Day8MVC.ViewModel
         public double? Salary { get; set; }
         public DateTime Bdate { get; set; }
         public string? Sex { get; set; }
+        public int ? ESSN{ get; set; }
     }
 }

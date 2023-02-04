@@ -26,20 +26,25 @@ namespace Day8MVC.Controllers
             employeeService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
-        //public IActionResult Edit(Employee emp)
-        //{
-        //    employeeService.Edit(emp);
-        //    return RedirectToAction(nameof(Index));
-        //}
+        
         [HttpGet]
         public IActionResult Add()
         {
             return View(employeeService.GetAll());
         }
         [HttpPost]
-        public IActionResult Add(EmployeeVM emp)
+        public IActionResult AddDB(EmployeeVM emp)
         {
             employeeService.Add(emp);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Edit(Employee emp)
+        {
+            return View(employeeService.GetAll());
+        }
+        public IActionResult EditDB(EmployeeVM emp)
+        {
+            employeeService.Edit(emp);
             return RedirectToAction(nameof(Index));
         }
     }

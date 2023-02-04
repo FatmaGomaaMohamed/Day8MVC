@@ -3,17 +3,21 @@
 *@
 @{
 }
+
 <h1>Edit Employee</h1>
 
-<form action="/Employee/Edit">
+<form action="/Employee/EditDB">
     <input id="id" name="id" value="@Model.SSN" hidden />
 
     <input id="FirstName" name="SSN" type="text" value="@Model.SSN" style="visibility:hidden" />
     <label>FirstName</label>
     <input id="FirstName" name="FirstName" type="text" value="@Model.FirstName" />
 
-    <label> Address</label>
-    <input id=" Address" name="Address" type="text" value="@Model.Address" />
+    <label>LastName </label>
+    <input id="LastName " name="LastName " type="text" value="@Model.LastName " />
+
+    <label> Salary</label>
+    <input id=" Salary" name="Salary" type="number" value="@Model.Salary" />
 
     <input type="submit" value="Edit" />
 </form>

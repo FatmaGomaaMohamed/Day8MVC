@@ -45,23 +45,20 @@ namespace Day8MVC.Services
             };
             return employeeVM;
         }
-        //public int Add(Employee employee)
-        //{
-        //    emp = employeeRepo.Add(employee);
-        //    EmployeeVM employeeVM = new()
-        //    {
-        //        SSN = employee.SSN,
-        //        FirstName = employee.FirstName,
-        //        MiddleName = employee.MiddleName,
-        //        LastName = employee.LastName
-        //    };
-        //    return employeeRepo.Add(employeeVM);
-        //}
-
-        public int Edit(EmployeeVM employee)
+        public int Edit(EmployeeVM employeeVM)
         {
-            Employee employee1 = new Employee();
-            return employeeRepo.Edit(employee1);
+            Employee employee = new Employee()
+            {
+                SSN = employeeVM.SSN,
+                FirstName = employeeVM.FirstName,
+                LastName = employeeVM.LastName,
+                MiddleName = employeeVM.MiddleName,
+                Salary = employeeVM.Salary,
+                Sex = employeeVM.Sex,
+                Address = employeeVM.Address
+            };
+
+            return employeeRepo.Edit(employee);
         }
         public int Delete(int id)
         {  
@@ -76,6 +73,7 @@ namespace Day8MVC.Services
             employee.Address=employeevm.Address;
             employee.LastName=employeevm.LastName;
             employee.MiddleName= employeevm.MiddleName;
+            employee.ESSN = employeevm.ESSN;
             return employeeRepo.Add(employee);
         }
     }

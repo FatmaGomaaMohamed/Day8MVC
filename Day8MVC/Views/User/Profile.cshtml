@@ -1,0 +1,24 @@
+﻿@model IEnumerable<RegistrationVM>
+
+@{
+    ViewData["Title"] = "Registration";
+}
+<html>
+<body>
+    @foreach (var item in Model)
+        {
+    <h2>Welcome item.UserName</h2>
+        }
+    <div>
+        <ul>
+            @foreach (var item in Model)
+        {
+            <li>FName: @item.UserName</li>
+            <li>MidName: @item.Age</li>
+            <li>Address: @item.Address</li>
+            <li>Birthdate: @item.Age</li>
+        }
+        </ul>
+    </div>
+</body>
+</html>

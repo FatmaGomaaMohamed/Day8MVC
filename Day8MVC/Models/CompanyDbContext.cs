@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 namespace Day8MVC.Models
 {
-    public class CompanyDbContext:DbContext
+    public class CompanyDbContext: IdentityDbContext<ApplicationUser>
     {
         public CompanyDbContext()
         {
@@ -20,6 +22,9 @@ namespace Day8MVC.Models
         public virtual DbSet<Dependent> Dependents { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Works_On> Works_s { get; set; }
+        public DbSet<Product> products { get; set; }
+        //public DbSet<Layers_DI_Identity.ViewModels.RegistrationVM> RegistrationVM { get; set; } = default!;
+        //public DbSet<Layers_DI_Identity.ViewModels.LoginVM> LoginVM { get; set; } = default!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-20IJDF9\\FATMAGOMAA;Initial Catalog=Identity;Integrated Security=True;TrustServerCertificate=True");
@@ -32,6 +37,7 @@ namespace Day8MVC.Models
             modelBuilder.Entity<Dependent>().HasKey(s => new { s.Name, s.SSN });
             modelBuilder.Entity<Employee>().HasOne(s => s.Works_For).WithMany(n => n.EmpWork);
             modelBuilder.Entity<Employee>().HasOne(s => s.Manage).WithOne(s=>s.EmpManage);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
